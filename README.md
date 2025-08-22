@@ -89,7 +89,7 @@ write "exit" then press enter
 
 # How to use Onprem
 
-## Login
+## Login with Antares Eazy Account
 open powershell and goto dir folder app
 run this command
 ```
