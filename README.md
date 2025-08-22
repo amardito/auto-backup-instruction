@@ -89,15 +89,17 @@ write "exit" then press enter
 
 # How to use Onprem
 
-1. open powershell and goto dir folder app
+## Login
+open powershell and goto dir folder app
 run this command
 ```
 npx onprem-backup login
 ```
 after ✔️ success login
-exit terminal with ctrl+c 2x
+exit terminal with ctrl+c 2x<br/>
 
-2. still in terminal on dir folder app
+## Select Camera
+still in terminal on dir folder app
 run this command
 ```
 npx onprem-backup select-camera
@@ -106,9 +108,10 @@ select camera with arrow up and down key
 and press "space" to selecting camera or press "a" to selecting all camera
 and press enter
 after ✔️ success selecting camera
-exit terminal with ctrl+c 2x
+exit terminal with ctrl+c 2x<br/>
 
-3. still in terminal on dir folder app
+## run auto schedule
+still in terminal on dir folder app
 run this command to schedule download 2 hour back from now
 ```
 npx onprem-backup schedule
@@ -118,13 +121,15 @@ run this command to schedule download with custom time from now
 ```
 npx onprem-backup schedule --from epochTime
 ```
-you can get epochTime from here [epochTimeConverter](https://www.unixtimestamp.com/)
+you can get epochTime from here [epochTimeConverter](https://www.unixtimestamp.com/)<br/>
 
-4. open new terminal and goto dir folder app
+## run auto download
+open new terminal and goto dir folder app
 then run this, to run auto download
 ```
 npm run worker
 ```
+
 
 ## COMMAND LIST
 
