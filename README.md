@@ -45,10 +45,11 @@ node -v
 ```
 npm -v
 ```
-Keep redis-server terminal open
+
 ```
 redis-server
 ```
+Keep redis-server terminal open, open new terminal
 ```
 mysql --version
 ```
