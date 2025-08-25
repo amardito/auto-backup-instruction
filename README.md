@@ -45,8 +45,9 @@ node -v
 ```
 npm -v
 ```
+Keep redis-server terminal open
 ```
-Get-Service redis
+redis-server
 ```
 ```
 mysql --version
