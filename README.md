@@ -26,10 +26,6 @@ choco install nodejs-lts --version=18.20.2 -y
 - Redis
 ```
 choco install redis -y
-cd "C:\ProgramData\chocolatey\lib\redis\tools"
-.\redis-server.exe --service-install redis.windows.conf
-.\redis-server.exe --service-start
-Set-Service -Name redis -StartupType Automatic
 ```
 - Mysql
 ```
@@ -95,8 +91,6 @@ run this command
 ```
 npx onprem-backup login
 ```
-after ✔️ success login
-exit terminal with ctrl+c 2x<br/>
 
 ## Select Camera
 still in terminal on dir folder app
@@ -107,8 +101,6 @@ npx onprem-backup select-camera
 select camera with arrow up and down key
 and press "space" to selecting camera or press "a" to selecting all camera
 and press enter
-after ✔️ success selecting camera
-exit terminal with ctrl+c 2x<br/>
 
 ## run auto schedule
 still in terminal on dir folder app
