@@ -31,6 +31,10 @@ choco install redis -y
 ```
 choco install mysql -y
 ```
+if not work use this
+```
+choco install mariadb -y
+```
 - ffmpeg (for video conversion)
 ```
 choco install ffmpeg -y
