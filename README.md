@@ -90,6 +90,7 @@ copy .env.example .env
 ```powershell
 npm install
 ```
+do this while in directory antares-eazy-auto-backup-cloud-recording
 
 ---
 
@@ -114,14 +115,18 @@ exit
 
 ## 📘 Usage Guide  
 
+```powershell
+npx onprem-backup
+```
+
 ### 1. Login with Antares Eazy Account  
 ```powershell
-npx onprem-backup login
+login
 ```
 
 ### 2. Select Camera(s)  
 ```powershell
-npx onprem-backup select-camera
+select-camera
 ```
 - Use `↑ / ↓` keys to navigate.  
 - Press `Space` to select.  
@@ -132,13 +137,9 @@ npx onprem-backup select-camera
 
 - Download last **2 hours**:  
 ```powershell
-npx onprem-backup schedule
+schedule
 ```
-
-- Download from a **custom epoch time**:  
-```powershell
-npx onprem-backup schedule --from <epochTime>
-```
+Download range time with **custom epoch time**:  
 👉 Convert time to epoch here: [Unix Timestamp Converter](https://www.unixtimestamp.com/)
 
 ### 4. Run Auto Download Worker  
@@ -153,10 +154,8 @@ npm run worker
 
 | Command                                | Description                         |
 |----------------------------------------|-------------------------------------|
-| `npx onprem-backup login`              | Login with Antares Eazy credentials |
-| `npx onprem-backup select-camera`      | Select which cameras to backup      |
-| `npx onprem-backup schedule`           | Schedule auto backup (last 2 hours) |
-| `npx onprem-backup schedule --from X`  | Schedule auto backup from epochTime |
+| `npx onprem-backup`                    | Antares Eazy CLI auto backup        |
+| `redis-server`                         | Job manager auto-download           |
 | `npm run worker`                       | Start the worker for auto-download  |
 
 ---
