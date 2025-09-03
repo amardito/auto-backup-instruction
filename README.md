@@ -86,11 +86,11 @@ copy .env.example .env
 
 🔑 Request `.env` values from the Operator.  
 
-3. Install dependencies:
+3. Install dependencies: *
+do this while in directory antares-eazy-auto-backup-cloud-recording
 ```powershell
 npm install
 ```
-do this while in directory antares-eazy-auto-backup-cloud-recording
 
 ---
 
