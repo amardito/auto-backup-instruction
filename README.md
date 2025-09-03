@@ -1,137 +1,162 @@
-# install choco
 
-Run this on powershell with administrator
+# Antares Eazy – Auto Backup Cloud Recording (On-Prem CLI)
 
-```
+This CLI tool helps you **automate backup of CCTV recordings** from Antares Eazy into your on-premise environment.
+
+---
+
+## 🚀 Prerequisites
+
+Before installation, ensure you are running **Windows with PowerShell (Administrator mode)**.
+
+### 1. Install Chocolatey  
+Run the following command in **PowerShell (Admin):**
+
+```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; `
 [System.Net.ServicePointManager]::SecurityProtocol = `
 [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
 iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
 
-Close and reopen powershell with administrator
-then run
+Close and reopen PowerShell (Admin), then verify installation:
 
-```
+```powershell
 choco -v
 ```
 
+---
 
-# Install onprem environment
+### 2. Install Dependencies via Chocolatey  
 
-- Node.js LTS (includes npm)
-```
+- **Node.js LTS (v18.20.2)**  
+```powershell
 choco install nodejs-lts --version=18.20.2 -y
 ```
-- Redis
-```
+
+- **Redis**  
+```powershell
 choco install redis -y
 ```
-- Mysql
-```
+
+- **MySQL (or MariaDB alternative)**  
+```powershell
 choco install mysql -y
-```
-if not work use this
-```
+# If MySQL fails, try:
 choco install mariadb -y
 ```
-- ffmpeg (for video conversion)
-```
+
+- **FFmpeg (for video conversion)**  
+```powershell
 choco install ffmpeg -y
 ```
 
-Close and reopen powershell with administrator
+Reopen PowerShell (Admin) after installation.
 
-## Environment requirement check
-```
+---
+
+## ✅ Verify Environment Setup  
+
+Run the following commands to confirm everything is installed:
+
+```powershell
 node -v
-```
-```
 npm -v
-```
-
-```
 redis-server
-```
-Keep redis-server terminal open, open new terminal
-```
 mysql --version
-```
-```
 ffmpeg -version
 ```
 
-## Installation APP
-```
+⚠️ Keep `redis-server` running in a dedicated terminal.
+
+---
+
+## 📦 Install the App
+
+1. Extract the package:
+```powershell
 unzip antares-eazy-auto-backup-cloud-recording.zip
 cd antares-eazy-auto-backup-cloud-recording
 ```
-open powershell and goto dir folder app
-```
+
+2. Copy environment file:
+```powershell
 copy .env.example .env
 ```
-Request .env value to Operator
-```
+
+🔑 Request `.env` values from the Operator.  
+
+3. Install dependencies:
+```powershell
 npm install
 ```
 
-## setup database environment
-```
+---
+
+## 🗄️ Database Setup  
+
+1. Open MySQL (press **Enter** if no password):  
+```powershell
 mysql -u root -p
 ```
 
-press enter without password
-
-```
+2. Create the database:  
+```sql
 CREATE DATABASE onprem_backup CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
-write "exit" then press enter
-
-
-# How to use Onprem
-
-## Login with Antares Eazy Account
-open powershell and goto dir folder app
-run this command
+3. Exit MySQL:  
+```sql
+exit
 ```
+
+---
+
+## 📘 Usage Guide  
+
+### 1. Login with Antares Eazy Account  
+```powershell
 npx onprem-backup login
 ```
 
-## Select Camera
-still in terminal on dir folder app
-run this command
-```
+### 2. Select Camera(s)  
+```powershell
 npx onprem-backup select-camera
 ```
-select camera with arrow up and down key
-and press "space" to selecting camera or press "a" to selecting all camera
-and press enter
+- Use `↑ / ↓` keys to navigate.  
+- Press `Space` to select.  
+- Press `a` to select **all cameras**.  
+- Press `Enter` to confirm.  
 
-## run auto schedule
-still in terminal on dir folder app
-run this command to schedule download 2 hour back from now
-```
+### 3. Schedule Auto Download  
+
+- Download last **2 hours**:  
+```powershell
 npx onprem-backup schedule
 ```
-or
-run this command to schedule download with custom time from now
-```
-npx onprem-backup schedule --from epochTime
-```
-you can get epochTime from here [epochTimeConverter](https://www.unixtimestamp.com/)<br/>
 
-## run auto download
-open new terminal and goto dir folder app
-then run this, to run auto download
+- Download from a **custom epoch time**:  
+```powershell
+npx onprem-backup schedule --from <epochTime>
 ```
+👉 Convert time to epoch here: [Unix Timestamp Converter](https://www.unixtimestamp.com/)
+
+### 4. Run Auto Download Worker  
+In a **new terminal**, run:  
+```powershell
 npm run worker
 ```
 
+---
 
-## COMMAND LIST
+## 📜 Command Reference  
 
-- npx onprem-backup login
-- npx onprem-backup select-camera
-- npx onprem-backup schedule
-- npm run worker
+| Command                                | Description                         |
+|----------------------------------------|-------------------------------------|
+| `npx onprem-backup login`              | Login with Antares Eazy credentials |
+| `npx onprem-backup select-camera`      | Select which cameras to backup      |
+| `npx onprem-backup schedule`           | Schedule auto backup (last 2 hours) |
+| `npx onprem-backup schedule --from X`  | Schedule auto backup from epochTime |
+| `npm run worker`                       | Start the worker for auto-download  |
+
+---
