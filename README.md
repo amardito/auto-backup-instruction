@@ -62,9 +62,9 @@ Run the following commands to confirm everything is installed:
 ```powershell
 node -v
 npm -v
-redis-server
 mysql --version
 ffmpeg -version
+redis-server
 ```
 
 ⚠️ Keep `redis-server` running in a dedicated terminal.
