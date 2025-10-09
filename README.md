@@ -9,8 +9,8 @@ This CLI tool helps you **automate backup of CCTV recordings** from Antares Eazy
 
 Before installation, ensure you are running **Windows with PowerShell (Administrator mode)**.
 
-### 1. Install Chocolatey  
-Run the following command in **PowerShell (Admin):**
+### 🧰 Step 1: Install Chocolatey (Windows Package Manager)
+Open PowerShell as Administrator, then run:
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; `
@@ -19,143 +19,33 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; `
 iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
 
-Close and reopen PowerShell (Admin), then verify installation:
-
-```powershell
-choco -v
-```
+This installs Chocolatey so you can easily install Docker and other tools.
 
 ---
 
-### 2. Install Dependencies via Chocolatey  
+### 🐳 Step 2: Install Docker with Chocolatey
+Once Chocolatey is installed, run: 
 
-- **Node.js LTS (v18.20.2)**  
-```powershell
-choco install nodejs-lts --version=18.20.2 -y
+- **Powershell**  
+```
+choco install docker-desktop -y
 ```
 
-- **Redis**  
-```powershell
-choco install redis -y
-```
-
-- **MySQL (or MariaDB alternative)**  
-```powershell
-choco install mysql -y
-# If MySQL fails, try:
-choco install mariadb -y
-```
-
-- **FFmpeg (for video conversion)**  
-```powershell
-choco install ffmpeg -y
-```
-
-Reopen PowerShell (Admin) after installation.
+After installation:
+- Restart your system
+- Launch Docker Desktop
+- Make sure Docker is running (check the whale icon in the system tray)
 
 ---
 
-## ✅ Verify Environment Setup  
+### 📦 Step 3: Initialize and Run Your Service with Docker
 
-Run the following commands to confirm everything is installed:
+first go to folder directory auto-backup then
+request .env file to operator and put the file on service directory
 
-```powershell
-node -v
-npm -v
-mysql --version
-ffmpeg -version
-redis-server
+then open in terminal the service directory, and run this:
+```
+docker compose build
+docker compose run auto-backup
 ```
 
-⚠️ Keep `redis-server` running in a dedicated terminal.
-
----
-
-## 📦 Install the App
-
-1. Extract the package:
-```powershell
-unzip antares-eazy-auto-backup-cloud-recording.zip
-cd antares-eazy-auto-backup-cloud-recording
-```
-
-2. Copy environment file:
-```powershell
-copy .env.example .env
-```
-
-🔑 Request `.env` values from the Operator.  
-
-3. Install dependencies: *
-do this while in directory antares-eazy-auto-backup-cloud-recording
-```powershell
-npm install
-```
-
----
-
-## 🗄️ Database Setup  
-
-1. Open MySQL (press **Enter** if no password):  
-```powershell
-mysql -u root -p
-```
-
-2. Create the database:  
-```sql
-CREATE DATABASE onprem_backup CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-```
-
-3. Exit MySQL:  
-```sql
-exit
-```
-
----
-
-## 📘 Usage Guide  
-
-```powershell
-npx onprem-backup
-```
-
-### 1. Login with Antares Eazy Account  
-```powershell
-login
-```
-
-### 2. Select Camera(s)  
-```powershell
-select-camera
-```
-- Use `↑ / ↓` keys to navigate.  
-- Press `Space` to select.  
-- Press `a` to select **all cameras**.  
-- Press `Enter` to confirm.  
-
-### 3. Schedule Auto Download  
-
-- Download last **2 hours**:  
-```powershell
-schedule
-```
-Download range time with **custom epoch time**:  
-👉 Convert time to epoch here: [Unix Timestamp Converter](https://www.unixtimestamp.com/)
-
-### 4. Run Auto Download Worker  
-In a **new terminal**, run:  
-```powershell
-npm run worker
-```
-
----
-
-## 📜 Command Reference  
-
-| Command                                | Description                         |
-|----------------------------------------|-------------------------------------|
-| `npx onprem-backup`                    | Antares Eazy CLI auto backup        |
-| `redis-server`                         | Job manager auto-download           |
-| `npm run worker`                       | Start the worker for auto-download  |
-
----
