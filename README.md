@@ -43,6 +43,11 @@ After installation:
 first go to folder directory auto-backup then
 request .env file to operator and put the file on service directory
 
+run docker engine
+```
+Start-Process "C:\Program Files\Docker\Docker\Docker Desktop.exe"
+```
+
 then open in terminal the service directory, and run this:
 ```
 docker compose build
