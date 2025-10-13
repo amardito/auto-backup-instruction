@@ -50,6 +50,10 @@ Start-Process "C:\Program Files\Docker\Docker\Docker Desktop.exe"
 
 request app to operator
 
+open terminal on directory app which is antares-eazy-auto-backup-cloud-recording
+
+also need request .env to operator to save in directory app
+
 then open in terminal the service directory, and run this:
 ```
 docker compose build
