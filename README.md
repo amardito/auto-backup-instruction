@@ -60,3 +60,18 @@ docker compose build
 docker compose run auto-backup
 ```
 
+### 👁️ Step 4: Watching worker
+
+run this docker command
+
+```
+docker compose run auto-backup sh
+```
+
+run this after /app open
+```
+tail -f /logs/worker.log
+```
+
+
+
