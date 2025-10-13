@@ -70,7 +70,7 @@ docker compose run auto-backup sh
 
 run this after /app open
 ```
-tail -f /logs/worker.log
+tail -f ./logs/worker.log
 ```
 
 
