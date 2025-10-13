@@ -48,10 +48,7 @@ run docker engine
 Start-Process "C:\Program Files\Docker\Docker\Docker Desktop.exe"
 ```
 
-run pull image docker
-```
-docker pull amardito/antares-eazy-auto-backup:latest
-```
+request app to operator
 
 then open in terminal the service directory, and run this:
 ```
