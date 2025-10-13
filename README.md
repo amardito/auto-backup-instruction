@@ -57,6 +57,6 @@ also need request .env to operator to save in directory app
 then open in terminal the service directory, and run this:
 ```
 docker compose build
-docker compose up
+docker compose run auto-backup
 ```
 
