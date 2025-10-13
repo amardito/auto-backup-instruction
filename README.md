@@ -48,6 +48,11 @@ run docker engine
 Start-Process "C:\Program Files\Docker\Docker\Docker Desktop.exe"
 ```
 
+run pull image docker
+```
+docker pull amardito/antares-eazy-auto-backup:latest
+```
+
 then open in terminal the service directory, and run this:
 ```
 docker compose build
