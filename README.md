@@ -59,5 +59,6 @@ then open in terminal the service directory, and run this:
 docker compose build
 docker compose run auto-backup
 docker compose run auto-backup
+-
 ```
 
